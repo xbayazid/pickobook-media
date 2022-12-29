@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "author": "Jhon Smith",
+        "authorImg": "https://i.ibb.co/bJR5YfH/author-img-modified.png",
+        "img": "https://i.ibb.co/0fkGn5f/322250681-1203050663919338-2668917647575214608-n.jpg",
+        "postTitle": "Now Dhaka is the city of Matro Rail",
+        "react": 0,
+        "comment": ""
+    },
+    {
+        "id": 2,
+        "author": "Rasel Islam",
+        "authorImg": "https://i.ibb.co/bJR5YfH/author-img-modified.png",
+        "img": "https://i.ibb.co/tKXTYWm/snake.jpg",
+        "postTitle": "Happy New Year, new me",
+        "react": 0,
+        "comment": ""
+    },
+    {
+        "id": 3,
+        "author": "Naina Nuva",
+        "authorImg": "https://i.ibb.co/bJR5YfH/author-img-modified.png",
+        "img": "https://i.ibb.co/bvzxpdy/friends.jpg",
+        "postTitle": "Friends are the love of life. Without Friends life is like a car without a driver.",
+        "react": 0,
+        "comment": ""
+    },
+    {
+        "id": 4,
+        "author": "Lover Boy Siddik",
+        "authorImg": "https://i.ibb.co/bJR5YfH/author-img-modified.png",
+        "img": "https://i.ibb.co/6FkqxZ8/parks.jpg",
+        "postTitle": "I love this place because whenever I came here it's remainds me about you. The moment we spent together here.",
+        "react": 0,
+        "comment": ""
+    },
+    {
+        "id": 5,
+        "author": "Rasel Islam",
+        "authorImg": "",
+        "img": "",
+        "postTitle": "",
+        "react": 0,
+        "comment": ""
+    }
+]

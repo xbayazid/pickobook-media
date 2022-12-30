@@ -1,12 +1,12 @@
 import React from 'react';
-import { FaGratipay} from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import './PostCard.css';
+import { FaGratipay} from "react-icons/fa";
 
-const PostCard = ({post}) => {
+const PostCards = ({post}) => {
     const {id, img, postTitle, author, authorImg, react} = post;
     return (
-        <div className='mt-8'>
+        <div>
+            <div className='mt-8'>
             <div className="card md:w-[45%] mx-auto bg-base-100 shadow-xl">
   <div className="card-body">
     <div className='flex'>
@@ -30,7 +30,8 @@ const PostCard = ({post}) => {
   </div>
 </div>
         </div>
+        </div>
     );
 };
 
-export default PostCard;
+export default PostCards;

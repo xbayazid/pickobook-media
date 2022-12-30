@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAbSFet2-lewy_WXBwRcD5Tfgph0A9Z6iY",
-  authDomain: "pickobook-media.firebaseapp.com",
-  projectId: "pickobook-media",
-  storageBucket: "pickobook-media.appspot.com",
-  messagingSenderId: "924753077280",
-  appId: "1:924753077280:web:9a0d41631e448fd4d40845"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import PostCard from './PostCard/PostCard';
+import PostCards from './PostCards';
 
-const Posts = () => {
+const AllMedia = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() =>{
         fetch('post.json')
@@ -9,17 +9,15 @@ const Posts = () => {
         .then(data => setPosts(data))
     }, []);
 
-    const slicePost = posts.slice(0,3)
-
     return (
-        <div className=''>
+        <div>
             {
-                slicePost.map(post => <PostCard key={post.id}
+              posts.map(post => <PostCards key={post.id}
                 post={post}
-                ></PostCard>)
+                ></PostCards>)
             }
         </div>
     );
 };
 
-export default Posts;
+export default AllMedia;

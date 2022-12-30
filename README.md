@@ -14,3 +14,9 @@ Project Name: **PickoBook-Media**  <br>
 
 ***Media***
 ![](readmeImg/media.png)
+
+***Message***
+![](readmeImg/message.png)
+
+***404 Page***
+![](readmeImg/error.png)

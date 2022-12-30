@@ -8,3 +8,9 @@ Project Name: **PickoBook-Media**  <br>
 
 ***Register***
 ![](readmeImg/register.png)
+
+***Home***
+![](readmeImg/home.png)
+
+***Media***
+![](readmeImg/media.png)

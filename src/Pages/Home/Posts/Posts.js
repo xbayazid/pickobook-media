@@ -12,9 +12,9 @@ const Posts = () => {
     const slicePost = posts.slice(0,3)
 
     return (
-        <div className=''>
+        <div className='items-center'>
             {
-                slicePost.map(post => <PostCard key={post.id}
+                slicePost.map(post => <PostCard key={post._id}
                 post={post}
                 ></PostCard>)
             }

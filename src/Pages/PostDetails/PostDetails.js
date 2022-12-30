@@ -2,7 +2,7 @@ import React from 'react';
 import { FaGratipay} from "react-icons/fa";
 
 const PostDetails = ({post}) => {
-    const {id, img, postTitle, author, authorImg, react} = post;
+    const {_id, img, postTitle, author, authorImg, react} = post;
     return (
         <div className='mt-8'>
         <div className="card md:w-[45%] mx-auto bg-base-100 shadow-xl">

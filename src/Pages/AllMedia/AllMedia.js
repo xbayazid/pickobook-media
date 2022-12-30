@@ -12,7 +12,7 @@ const AllMedia = () => {
     return (
         <div>
             {
-              posts.map(post => <PostCards key={post.id}
+              posts.map(post => <PostCards key={post._id}
                 post={post}
                 ></PostCards>)
             }

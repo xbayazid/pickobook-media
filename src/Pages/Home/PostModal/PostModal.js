@@ -1,77 +1,103 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import Loader from '../Shared/Loader/Loader';
 
-const PostModal = () => {
-    const { user, loading } = useContext(AuthContext);
-    // const { displayName, photoURL, email } = user;
-    const [posts, setPosts] = useState([]);
-    useEffect(()=>{
-        fetch('https://pickobook-media-server.vercel.app/availablePost')
-        .then(res => res.json())
-        .then(data => setPosts(data))
-    },[]);
+const PostModal = ({setOpenModal}) => {
+   const { user, loading } = useContext(AuthContext);
+  const { displayName, photoURL, email } = user;
+
+  if(loading){
+    return <Loader></Loader>
+  }
+
+  const handlePostCreate = event =>{
+    event.preventDefault();
+
+    const form = event.target;
+    const description = form.description.value;
+    const image = form.image.files[0];
+
+    console.log(process.env.REACT_APP_imageHostKey);
+    const imageHostKey = process.env.REACT_APP_imageHostKey; 
+    const formData = new FormData();
+    formData.append('image', image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+    fetch(url, {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(imageData => {
+      if(imageData.success){
+        console.log(imageData.data.url)
+
+        const post = {
+        author: displayName,
+        email: email,
+        img: photoURL,
+        description: description,
+        postImg: imageData.data.url,
+        react: 0,
+        comments: []
+        }
+
+        console.log(post);
+
+        fetch('https://pickobook-media-server.vercel.app/availablePost', {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(post)
+            })
+            .then(res => res.json())
+            .then(result => {
+              console.log(result);
+              setOpenModal(false);
+            })
+      }
+    })
+
     
-    const handlePost = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const author =  form.author.value;
-        const authorImg =  form.authorImg.value;
-        const img = form.img.value;
-        const postTitle = form.postTitle.value;
-        const post = {author, authorImg, img, postTitle};
-        
-        fetch("https://pickobook-media-server.vercel.app/availablePost",{
-          method: "POST",
-        headers:{
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(post),
-        })
-        .then((res)=> res.json())
-        .then((data)=>{
-          const newPost = [...post, data];
-          setPosts(newPost);
-        })
-        .catch((error) => console.error(error));
-        form.reset();
-    }
+  
+  }
 
-    return (
-        <div>
-          <input type="checkbox" id="post-create-modal" className="modal-toggle" />
-          <div className="modal">
-            <div className="modal-box relative">
-              <div>
-                <h3 className="text-center text-lg font-bold"></h3>
-                <label
-                  htmlFor="post-create-modal"
-                  className="btn btn-sm btn-circle absolute right-2 top-2"
-                >
-                  ✕
-                </label>
-              </div>
-              <div className="divider"></div>
-              <div className="flex items-center">
-                {/* <img src={photoURL} alt="" className="w-[50px] rounded-full" /> */}
-                {/* <p name="author" className="text-lg ml-2">{displayName}</p> */}
-              </div>
-              <Form onSubmit={handlePost}>
-              <input
-                type="text" name='postTitle'
-                placeholder="What's on your mind..."
-                className="input input-bordered w-full mt-3"
-              />
-              <div className=" mt-3 w-full h-20 border-2 rounded-sm flex justify-center items-center">
-                <input type="file" name="drag and drop img" id="" className="w-full h-full pt-7 pl-28" />
-              </div>
-              </Form>
-              {/* <button className="btn btn-block btn-primary mt-3">Post</button> */}
-              <input className='btn btn-accent mt-3 w-full' type="submit" value="submit" />
-            </div>
+  return (
+    <div>
+      <input type="checkbox" id="post-create-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <div>
+            <h3 className="text-center text-lg font-bold">Create Post</h3>
+            <label
+              htmlFor="post-create-modal"
+              className="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
           </div>
+          <div className="divider"></div>
+          <form onSubmit={handlePostCreate}>
+          <div className="flex items-center">
+            <img src={photoURL} alt="" className="w-[50px] rounded-full" />
+            <p className="text-lg ml-2">{displayName}</p>
+          </div>
+          <input
+            type="text"
+            placeholder="Type here"
+            name = "description"
+            className="input w-full mt-3"
+          />
+          <div className=" mt-3 w-full h-20 border-2 rounded-sm flex justify-center items-center">
+            <input type="file" name="image" className="w-full h-full pt-7 pl-28" />
+          </div>
+          <button type="submit" className="btn btn-block btn-primary mt-3">Post</button>
+          </form>
         </div>
-      );
+      </div>
+    </div>
+  );
 };
 
 export default PostModal;

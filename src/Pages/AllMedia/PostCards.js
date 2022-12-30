@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGratipay} from "react-icons/fa";
 
 const PostCards = ({post}) => {
-    const {id, img, postTitle, author, authorImg, react} = post;
+    const {_id, img, postTitle, author, authorImg, react} = post;
     return (
         <div>
             <div className='mt-8'>
@@ -23,7 +23,7 @@ const PostCards = ({post}) => {
     <button className='btn btn-accent ml-3'>POST</button>
     </div>
     <div>
-        <Link to={`/posts/${id}`}>
+        <Link to={`/posts/${_id}`}>
         <button className='btn btn-outline'>Details</button>
         </Link>
     </div>

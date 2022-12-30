@@ -8,6 +8,9 @@ import PostDetails from "../Pages/PostDetails/PostDetails";
 import AllMedia from "../Pages/AllMedia/AllMedia";
 import Error from "../Pages/Error/Error";
 import Message from "../Pages/Message/Message";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
+import PostModal from "../Pages/Home/PostModal/PostModal";
+import AboutMe from "../Pages/AboutMe/AboutMe";
 
 export const router = createBrowserRouter([
     {
@@ -28,7 +31,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/posts/:id',
-                element: <PostDetails></PostDetails>
+                element: <PostDetails></PostDetails>,
+                loader: ({params}) => fetch(`https://pickobook-media-server.vercel.app/availablePost/${params.id}`)
             },
             {
                 path: '/login',
@@ -37,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/about',
+                element: <AboutMe></AboutMe>
             }
         ]
     },

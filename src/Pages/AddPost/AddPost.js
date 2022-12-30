@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const AddPost = () => {
     const [posts, setPosts] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/availablePost')
+        fetch('https://pickobook-media-server.vercel.app/availablePost')
         .then(res => res.json())
         .then(data => setPosts(data))
     },[]);

@@ -7,7 +7,7 @@ const PostModal = () => {
     // const { displayName, photoURL, email } = user;
     const [posts, setPosts] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/availablePost')
+        fetch('https://pickobook-media-server.vercel.app/availablePost')
         .then(res => res.json())
         .then(data => setPosts(data))
     },[]);
@@ -21,7 +21,7 @@ const PostModal = () => {
         const postTitle = form.postTitle.value;
         const post = {author, authorImg, img, postTitle};
         
-        fetch("http://localhost:5000/availablePost",{
+        fetch("https://pickobook-media-server.vercel.app/availablePost",{
           method: "POST",
         headers:{
           "content-type": "application/json",

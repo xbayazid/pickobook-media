@@ -4,7 +4,7 @@ import PostCards from './PostCards';
 const AllMedia = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() =>{
-        fetch('post.json')
+        fetch("https://pickobook-media-server.vercel.app/availablePost")
         .then(res => res.json())
         .then(data => setPosts(data))
     }, []);

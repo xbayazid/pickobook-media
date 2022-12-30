@@ -5,7 +5,7 @@ const PostDetails = ({post}) => {
     const {id, img, postTitle, author, authorImg, react} = post;
     return (
         <div className='mt-8'>
-        {/* <div className="card md:w-[45%] mx-auto bg-base-100 shadow-xl">
+        <div className="card md:w-[45%] mx-auto bg-base-100 shadow-xl">
 <div className="card-body">
 <div className='flex'>
     <img src={authorImg} className="rounded-full w-14" alt="" />
@@ -21,7 +21,7 @@ const PostDetails = ({post}) => {
 <button className='btn btn-accent ml-3'>POST</button>
 </div>
 </div>
-</div> */}
+</div>
     </div>
     );
 };
